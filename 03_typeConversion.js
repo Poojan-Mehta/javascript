@@ -44,6 +44,7 @@ let intToString = String(score)
 
 // console.log(intToString + " " + typeof intToString)
 
+// prefix and postfix learning link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment
 // postfix
 let x = 10
 let y = x++
