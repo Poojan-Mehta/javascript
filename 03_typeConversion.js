@@ -49,8 +49,8 @@ let intToString = String(score)
 let x = 10
 let y = x++
 
-//console.log(x) // output 11
-//console.log(y) // output 10
+console.log(x) // output 11
+console.log(y) // output 10
 
 // prefix
 let x2 = 10
