@@ -9,10 +9,10 @@ const personal_details = {
     city: "junagadh"
 }
 
-console.log(personal_details)
+//console.log(personal_details)
 
 personal_details["email"] = "poojanmehta008@gmail.com"
-console.log(personal_details)
+//console.log(personal_details)
 
 
 // freeze can stop the modification of the object
@@ -56,4 +56,28 @@ const combine_obj = Object.assign({},obj1,obj2,obj3)
 
 // should use this below method
 const combine_obj2 = {...obj1, ...obj2, ...obj3}
-console.log(combine_obj2)
+//console.log(combine_obj2)
+
+const users = [
+    {
+        id: 1,
+        name: "poojan mehta",
+        email: "poojanmehta008@gmail.com"
+    },
+    {
+        id: 2,
+        name: "hardik up",
+        email: "hardik@gmail.com"
+    },
+    {
+        id: 3,
+        name: "harshit v",
+        email: "harshitv@gmail.com"
+    },
+];
+
+// tried loop
+for (let index = 0; index < users.length; index++) {
+    console.log(users[index].email);    
+}
+
