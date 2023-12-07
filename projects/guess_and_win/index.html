@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Guess the number between 1 to 10 and win Iphone 15 pro max</h1>
+        <div class="winning_price">
+            <img src="./image/ip15pm.jpeg" alt="">
+        </div>
+        <div class="form-div">
+            <form id="form">
+                <input type="hidden" name="orignal_number" id="orignal_number">
+                <input type="text" name="guess_number" id="guess_number">
+
+                <input type="submit" id="submit" value="Click here">
+            </form>
+        </div>
+        <div>
+            <span class="message"></span>
+        </div>
+        <div>
+            <span class="prev-guess"></span>
+        </div>
+        <div>
+            <span class="attempt">Total attempts: 3</span>
+        </div>
+        <div>
+            <span class="refresh_timer"></span>
+        </div>
+    </div>
+</body>
+<script>
+    let orignal_number = document.querySelector('#orignal_number')
+    orignal_number = orignal_number.value = Math.floor(Math.random() * 10) + 1;
+
+    let total_attempt = 3
+    let current_attempt = 1
+    let prev_guesses = []
+
+    let try_again_message = "Opps, please try again"
+    let success_message = "Congrats, You've won an Iphone..."
+    
+    let message = document.querySelector('.message')
+    let attempt = document.querySelector('.attempt')
+    let prev_guess_span = document.querySelector('.prev-guess')
+
+    document.querySelector('#submit').addEventListener('click', function(e){
+        e.preventDefault()
+
+        if(total_attempt > 0){
+            let guess_number = document.querySelector('#guess_number').value
+            if(guess_number == orignal_number){
+                message.innerHTML = success_message
+                reset()
+                message.style = "color:green"
+            }else{
+                prev_guesses.push(guess_number)
+                prev_guess_span.innerHTML = `Previous guesses: ${prev_guesses}`
+                total_attempt--
+                attempt.innerHTML = `Attempts left: ${total_attempt}`
+                message.innerHTML = try_again_message  
+                guess_number = ''
+                message.style = "color:red"             
+            }
+        }else{
+            reset()
+        }        
+    })
+
+    function reset(){
+        total_attempt = 3
+        current_attempt = 1
+        prev_guesses = []
+
+        orignal_number = orignal_number.value = Math.floor(Math.random() * 10) + 1;   
+        
+        let guess_number = document.querySelector('#guess_number').value
+        guess_number = ''
+        
+        prev_guess_span.innerHTML = ''
+        
+        attempt.innerHTML = ''
+
+        setTimeout(()=>{
+            message.innerHTML = ''
+            attempt.innerHTML = `Total attempts: ${total_attempt}`
+        },2000)
+    }
+    
+</script>
+</html>

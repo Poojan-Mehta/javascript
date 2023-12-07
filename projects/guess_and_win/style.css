@@ -1,0 +1,11 @@
+body{
+    background-color: #dcd7d3;
+}
+.winning_price{
+    display: flex;
+    align-items: center;
+}
+
+.form-div{
+    margin: 10px;
+}

@@ -1,0 +1,24 @@
+// difference between
+// innerText, textContent, innerHtml
+
+// innerText
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p id="info">This is info <span class="optional_info" style="display: none;"> optional info </span></p>
+    </div>
+</body>
+<script>
+    let info = document.getElementById('info')
+    console.log(`innerText:- ${info.innerText}`)
+    console.log(`textContent:- ${info.textContent}`)
+    console.log(`innerHTML:- ${info.innerHTML}`)
+</script>
+</html>
