@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stop_and_win/style.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Stop when you see below number and win Apple air m2</h1>
+
+            <span>Number: </span><span class="orignal_value"></span>
+        </div>
+        <div>
+            <span>Current number: </span><span class="result_value"></span>
+        </div>
+
+        <div>
+            <button id="reset_timer" onclick="reset_game()">Reset</button>
+            <button id="start_timer">Start</button>
+            <button id="stop_timer">Stop</button> 
+        </div>
+               
+        <div>
+            <span class="message"></span>
+        </div>
+        
+    </div>
+</body>
+    <script>  
+        
+        let orignal_value = document.querySelector('.orignal_value')
+        orignal_value.innerHTML = Math.floor(Math.random() * 100)
+
+        let start_number = 0
+        let end_number = 100
+
+        let result_value = document.querySelector('.result_value')   
+        
+        let start_interval         
+
+        let start_timer = document.querySelector('#start_timer').addEventListener('click',function(e){
+            start_interval = setInterval(function() {                
+                if(start_number <= end_number){
+                    start_number++;
+                    result_value.innerHTML = start_number
+                }
+            },1000)
+        })
+
+        let stop_timer = document.querySelector('#stop_timer').addEventListener('click',function(e){
+            clearTimeout(start_interval)
+            check_win()            
+        })
+
+        let message = document.querySelector('.message')
+        const check_win = function(){
+            if(orignal_value.innerHTML == result_value.innerHTML){
+                message.style.color = "green"
+                message.innerHTML = "Congratulations you have won Apple air m2"
+            }else{
+                message.style.color = "red"
+                message.innerHTML = "Opps, better luck next time"
+
+                reset_game()
+            }
+        }        
+
+        const reset_game = function(){
+            orignal_value = document.querySelector('.orignal_value')
+            orignal_value.innerHTML = Math.floor(Math.random() * 100)
+
+            start_number = 0
+            end_number = 100
+
+            result_value.innerHTML = "" 
+
+            setTimeout(() => {
+                message.innerHTML = ""
+            }, 2000);
+        }
+
+    </script>
+</html>

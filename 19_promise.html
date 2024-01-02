@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Check user details</h1>
+        <div class="user_details">
+            <span class="user_name_span">
+                User name: 
+                <span class="user_name"></span>
+            </span>
+            <span class="user_email_span">
+                User email: 
+                <span class="user_email"></span>
+            </span>
+        </div>
+    </div>
+</body>
+    <script>
+        userDetails()
+        async function userDetails(){
+            let user_details = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve({user_name: "poojan", user_email: "poojan@gmail.com"})
+                }, 2000);
+            }).then((userdata)=>{
+                console.log(userdata)
+                document.querySelector('.user_name').innerHTML = userdata.user_name
+                document.querySelector('.user_email').innerHTML = userdata.user_email
+            }).catch((err) => {
+
+            })
+        }
+
+        async function impMessage(){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Issue has been resolved")
+                }, 1500);
+            })
+        }
+
+        getImpMessage()
+        async function getImpMessage(){
+            let impMessageVar = await impMessage()
+
+            // if we don't use await then It'll show promise object so we must need to use await and
+            // our function should be async
+            // let impMessageVar = await impMessage()
+            console.log(impMessageVar)
+
+            // all the below code will run once we get something from promise
+            console.log('hiii')
+        }
+
+        
+    </script>
+</html>
